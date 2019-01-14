@@ -7,9 +7,13 @@ from pipe_nonblock.calls import BlockReceiver, NonBlockReceiver, BlockSender, No
 
 
 class DuplexConnection:
-    def __init__(self, receiver, sender):
+    def __init__(self, sock, receiver, sender):
+        self._sock = sock
         self._receiver = receiver
         self._sender = sender
+
+    def fileno(self):
+        return self._sock.fileno()
 
     def send(self, *args, **kwargs):
         self._sender.send(*args, **kwargs)
@@ -37,7 +41,7 @@ def _get_sender(nonblock):
 
 
 def _get_duplex_connection(nonblock, sock):
-    return DuplexConnection(_get_receiver(nonblock)(sock), _get_sender(nonblock)(sock))
+    return DuplexConnection(sock, _get_receiver(nonblock)(sock), _get_sender(nonblock)(sock))
 
 
 def Pipe(duplex=True, conn1_nonblock=True, conn2_nonblock=True):

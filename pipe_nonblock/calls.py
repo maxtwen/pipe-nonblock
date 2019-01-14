@@ -13,6 +13,9 @@ class Call:
     def __init__(self, handle):
         self._handle = handle
 
+    def fileno(self):
+        return self._handle.fileno()
+
     def _check_closed(self):
         if self._handle is None:
             raise OSError("handle is closed")
