@@ -1,19 +1,28 @@
+import os
+
 try:
     from setuptools import setup
 except ImportError:
     from distutils.core import setup
 
+
+def read(fname):
+    return open(os.path.join(os.path.dirname(__file__), fname)).read()
+
+
 config = {
-    'description': 'non-blocking pipe',
+    'description': 'Non-blocking multiprocessing pipe',
     'author': 'Maksim Afanasevsky',
-    'url': 'https://github.com/maxtwen/Non-Blocking-Pipe',
-    'download_url': 'https://github.com/maxtwen/Non-Blocking-Pipe',
+    'url': 'https://github.com/maxtwen/pipe-nonblock',
+    'download_url': 'https://github.com/maxtwen/pipe-nonblock',
     'author_email': 'maxtwen1@gmail.com',
-    'version': '0.3',
+    'version': '0.2',
     'install_requires': [''],
-    'packages': ['non_blocking_pipe'],
+    'packages': ['pipe_nonblock'],
     'scripts': [],
-    'name': 'non_blocking_pipe'
+    'name': 'pipe_nonblock',
+    'long_description': read('README.md'),
+    'long_description_content_type': 'text/markdown'
 }
 
 setup(**config)
