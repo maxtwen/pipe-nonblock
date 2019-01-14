@@ -16,7 +16,7 @@ config = {
     'url': 'https://github.com/maxtwen/pipe-nonblock',
     'download_url': 'https://github.com/maxtwen/pipe-nonblock',
     'author_email': 'maxtwen1@gmail.com',
-    'version': '0.2',
+    'version': '0.3',
     'install_requires': [''],
     'packages': ['pipe_nonblock'],
     'scripts': [],
